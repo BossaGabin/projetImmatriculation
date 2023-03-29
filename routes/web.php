@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dataList', function (){
-    return view(('dataList'));
+Route::get('/proprietaire', function (){
+    return view(('proprietaire'));
+});
+Route::get('/utilisateur', function (){
+    return view(('utilisateur'));
 });

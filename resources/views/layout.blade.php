@@ -143,9 +143,16 @@
       
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="dataList.blade.php">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Les données</span><i class=""></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Proprietaire</span><i class=""></i>
         </a>       
       </li><!-- End Tables Nav -->
+      <!-- btn d'enregistrement de vehicule    -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-register.html">
+          <i class="bi bi-card-list"></i>
+          <span>Utilisateurs</span>
+        </a>
+      </li>  <!-- End btn d'enregistrement de vehicule    -->
 
 
       <li class="nav-heading">Pages</li>
