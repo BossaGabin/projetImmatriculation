@@ -59,6 +59,10 @@
                         <label for="pwd" class="form-label">Image:</label>
                         <input type="file" class="form-control" id="image" name="image">
                       </div>
+                      <div class="mb-3">
+                        <label for="pwd" class="form-label">Plaque d'imatriculation:</label>
+                        <input type="text" class="form-control" id="plaque" name="plaque">
+                      </div>
                       
                       <button type="submit" class="btn btn-success">Valider</button>
                     </form>
