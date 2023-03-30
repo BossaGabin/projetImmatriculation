@@ -3,13 +3,9 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Les données</h1>
+     
       <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-          <li class="breadcrumb-item">Les données </li>
-         
-        </ol>
+        <h5 class="card-title">La liste des utilisateurs</h5>
       </nav>
     </div><!-- End Page Title -->
 
@@ -19,7 +15,15 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">La liste des utilisateurs</h5>
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+              @endif 
               {{-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> --}}
 
               <!-- Table with stripped rows -->
@@ -42,7 +46,8 @@
             
                   <!-- Modal body -->
                   <div class="modal-body">
-                    <form action="/action_page.php">
+                    <form action="{{ route('utilisateur') }}" method="POST">
+                      @csrf
                       <div class="mb-3 mt-3">
                         <label for="email" class="form-label">Nom complet:</label>
                         <input type="text" class="form-control" id="nom" placeholder="Entrer le nom " name="nom">

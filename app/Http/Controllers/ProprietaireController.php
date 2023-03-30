@@ -16,7 +16,7 @@ class ProprietaireController extends Controller
         $proprietaires = Proprietaire::orderBy("id", "asc")->get();
         return view("proprietaire", compact("proprietaires"));
     }
-    public function store(Proprietaire $proprietaire,ValidationRequest $request){
+    public function store(ValidationRequest $request){
         
        Proprietaire::create([
         'nomComplet'=>$request->nom,
@@ -30,9 +30,28 @@ class ProprietaireController extends Controller
        return back();
        
     }
+    public function update(Proprietaire $proprietaire, ValidationRequest $request){
+        // dd('ici');
+        // //La variable proprietaire permet de recuperer les donnees du proprietaire dont on souhaite fait la mise a jour
+        // //La variable request permet de recuprer la nouvelle valeur(le donnees du formulaires)
+        // dd($request->ignore() ) ;
+        Proprietaire::where('id','=', $proprietaire->id)->update([
+            'nomComplet'=>$request->nom,
+            'email'=>$request->email,
+            'adresse'=>$request->adresse,      
+            'telephone'=>$request->telephone,      
+            'pieceIdentite'=>'fichier.png',
+            'nip'=>$request->nip    
+                  
+           ]);
+        // $proprietaire->nom = $request->nom;
+        //$proprietaire->save();
+        return back();
 
-    // function create(){
-       
-    //     return view("cretateProprietaire");
-    // }
+    }
+    public function delete($id){
+
+        $proprietaire = Proprietaire::findOrFail($id);
+        $proprietaire->delete();
+    }
 }

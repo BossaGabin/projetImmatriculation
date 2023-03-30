@@ -20,4 +20,8 @@ Route::get('/', function () {
 });
 Route::get('/proprietaire', [ProprietaireController::class , 'index'] )->name("proprietaire");
 Route::get('/utilisateur', [UtilisateurController::class , 'index'] )->name("utilisateur");
-
+Route::post('/proprietaire', [ProprietaireController::class , 'store']);
+Route::post('/utilisateur',[UtilisateurController::class, 'store']);
+// Route::get('/proprietaire/{proprietaire}/edite',[ProprietaireController::class, 'edite']);
+Route::patch('/proprietaire/update/{proprietaire}',[ProprietaireController::class, 'update'])->name('proprietaire.update');
+Route::delete('/proprietaire/delete/{proprietaire}',[ProprietaireController::class, 'delete'])->name('proprietaire.delete');

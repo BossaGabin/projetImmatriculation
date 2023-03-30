@@ -16,11 +16,11 @@ class CreateProprietairesTable extends Migration
         Schema::create('proprietaires', function (Blueprint $table) {
             $table->id();
             $table->string("nomComplet");
-            $table->string("email")->unique();
+            $table->string("email");
             $table->string("adresse");
             $table->string("pieceIdentite");
             $table->integer("telephone");
-            $table->integer("nip")->unique(); 
+            $table->integer("nip"); 
             $table->timestamps();
         });
     }
