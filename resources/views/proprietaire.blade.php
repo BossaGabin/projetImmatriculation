@@ -74,6 +74,7 @@
                       </div>
                         <button type="submit" class="btn btn-success">Valider</button>
                     </form>
+                  
                   </div>
             
                   <!-- Modal footer -->
@@ -85,7 +86,10 @@
               </div>
             </div>           
               <!-- End boutton Modal  Nouveau   -->
-
+              @if (session('success'))
+                  <div class="alert alert-danger">{{session('success')}}                  
+                  </div>
+              @endif
               <table class="table datatable">
                 <thead>
                   <tr>
@@ -171,8 +175,8 @@
                           <!-- End boutton Modal  Nouveau   -->   
                           <form action="{{ route('proprietaire.delete',$proprietaire->id ) }}" method="POST">
                             @csrf
-                            @method('delete')
-                            <a href="" class="btn btn-danger bi bi-trash" style=" margin-left:10px"></a>   
+                            @method('DELETE')
+                            <button class="btn btn-danger bi bi-trash" style=" margin-left:10px"></button>   
                           </form>                   
                      </div>
                     </td>

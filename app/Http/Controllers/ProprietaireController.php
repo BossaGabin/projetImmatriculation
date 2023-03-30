@@ -49,9 +49,10 @@ class ProprietaireController extends Controller
         return back();
 
     }
-    public function delete($id){
-
-        $proprietaire = Proprietaire::findOrFail($id);
-        $proprietaire->delete();
+    public function destroy($id){
+       
+       Proprietaire::find($id)->delete();
+       return  redirect()->route('proprietaire')->with('success', "Le proprietaire  a été supprimé avec succès !");
+        
     }
 }
