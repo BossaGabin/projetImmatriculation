@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProprietaireController;
+use App\Http\Controllers\UtilisateurController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/proprietaire', function (){
-    return view(('proprietaire'));
-});
-Route::get('/utilisateur', function (){
-    return view(('utilisateur'));
-});
+Route::get('/proprietaire', [ProprietaireController::class , 'index'] )->name("proprietaire");
+Route::post('/proprietaire', [ProprietaireController::class , 'store']);
+Route::get('/utilisateur', [UtilisateurController::class , 'index'] )->name("utilisateur");
+

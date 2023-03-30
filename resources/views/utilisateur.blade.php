@@ -78,47 +78,34 @@
 
               <table class="table datatable">
                 <thead>
+                 
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nom Complet du Propriétaire</th>
+                    <th scope="col">Nom Complet</th>
+                    <th scope="col">Nom  d'utilisateur</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Telephone</th>
-                    <th scope="col">Adresse</th>
-                    <th scope="col">Date d'ajout</th>
+                     <th scope="col">Date d'ajout</th>
                     <th scope="col">Statut</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($utilisateurs as $utilisateur)                    
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer@gmail.com</td>
-                    <td>2825252525</td>
-                    <td>RUE254</td>
-                    <td>2016-05-25</td>
+                    <th scope="row">{{$utilisateur->id}}</th>
+                    <td>{{$utilisateur->nomComplet}}</td>
+                    <td>{{$utilisateur->username}}</td>
+                    <td>{{$utilisateur->email}}</td>                    
+                    <td>{{$utilisateur->created_at}}</td>
                     <td><button class="btn btn-success">Actif</button></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer@gmail.com</td>
-                    <td>2825252525</td>
-                    <td>RUE254</td>
-                    <td>2016-05-25</td>
-                    <td><button class="btn btn-danger">Inactif</button></td>
-                    <td></td>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Brandon Jacob</td>
-                      <td>Designer@gmail.com</td>
-                      <td>2825252525</td>
-                      <td>RUE254</td>
-                      <td>2016-05-25</td>
-                      <td><button class="btn btn-success">Actif</button></td>
-                      <td></td>
-                    </tr>                    
+                    <td>
+                      <div style="display:flex;">
+                        <button class="btn btn-warning bi bi-pencil" style="color:white"></button>                      
+                        <button class="btn btn-danger bi bi-trash" style=" margin-left:10px"></button>
+                      </div>
+                    </td>
+                  </tr>  
+                  @endforeach
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

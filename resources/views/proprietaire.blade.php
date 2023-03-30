@@ -20,6 +20,15 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">La liste des propriétaires</h5>
+              @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif 
               {{-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> --}}
 
               <!-- Table with stripped rows -->
@@ -36,35 +45,39 @@
             
                   <!-- Modal Header -->
                   <div class="modal-header">
-                    <h4 class="modal-title">Renseigner les informations du vehicules</h4>
+                    <h4 class="modal-title">Renseigner les informations du proprietaire</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
             
                   <!-- Modal body -->
-                  <div class="modal-body">
-                    <form action="/action_page.php">
+                  <div class="modal-body">                                 
+                     <form action="{{ route('proprietaire') }}" method="POST">
+                      @csrf
                       <div class="mb-3 mt-3">
-                        <label for="email" class="form-label">Type:</label>
-                        <input type="number" class="form-control" id="type" placeholder="Entrer type du vehicule" name="type" min="2" max="4" size="5">
+                        <label for="nom" class="form-label">Nom complet:</label>
+                        <input type="text" class="form-control" id="nom" placeholder="Entrer le nom complet" name="nom" >
                       </div>
                       <div class="mb-3">
-                        <label for="pwd" class="form-label">Marque:</label>
-                        <input type="text" class="form-control" id="marque" placeholder="Entrer la marque" name="marque">
+                        <label for="pwd" class="form-label">Email:</label>
+                        <input type="mail" class="form-control" id="email" placeholder="Entrer le email" name="email">
                       </div>
                       <div class="mb-3">
-                        <label for="pwd" class="form-label">Modele:</label>
-                        <input type="text" class="form-control" id="modele" placeholder="Entrer le modele" name="modele">
+                        <label for="pwd" class="form-label">Telephone:</label>
+                        <input type="text" class="form-control" id="telephone" placeholder="Entrer le telephone" name="telephone">
                       </div>
                       <div class="mb-3">
-                        <label for="pwd" class="form-label">Image:</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <label for="pwd" class="form-label">Adresse:</label>
+                        <input type="text" class="form-control" id="adresse" name="adresse">
                       </div>
                       <div class="mb-3">
-                        <label for="pwd" class="form-label">Plaque d'imatriculation:</label>
-                        <input type="text" class="form-control" id="plaque" name="plaque">
+                        <label for="pwd" class="form-label">Piece d'identite:</label>
+                        <input type="file" class="form-control" id="piece" name="piece">
                       </div>
-                      
-                      <button type="submit" class="btn btn-success">Valider</button>
+                      <div class="mb-3">
+                        <label for="pwd" class="form-label">NIP:</label>
+                        <input type="number" class="form-control" id="nip" name="nip">
+                      </div>
+                        <button type="submit" class="btn btn-success">Valider</button>
                     </form>
                   </div>
             
@@ -75,54 +88,41 @@
             
                 </div>
               </div>
-            </div>
-            
-
+            </div>           
               <!-- End boutton Modal  Nouveau   -->
 
               <table class="table datatable">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nom Complet du Propriétaire</th>
+                    <th scope="col">Nom Complet</th>
                     <th scope="col">Email</th>
                     <th scope="col">Telephone</th>
                     <th scope="col">Adresse</th>
-                    <th scope="col">Date d'ajout</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Statut</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer@gmail.com</td>
-                    <td>2825252525</td>
-                    <td>RUE254</td>
-                    <td>2016-05-25</td>
-                    <td><button class="btn btn-success">Actif</button></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer@gmail.com</td>
-                    <td>2825252525</td>
-                    <td>RUE254</td>
-                    <td>2016-05-25</td>
-                    <td><button class="btn btn-danger">Inactif</button></td>
-                    <td></td>
+                  
+                  @foreach($proprietaires  as $proprietaire)
                     <tr>
-                      <th scope="row">3</th>
-                      <td>Brandon Jacob</td>
-                      <td>Designer@gmail.com</td>
-                      <td>2825252525</td>
-                      <td>RUE254</td>
-                      <td>2016-05-25</td>
-                      <td><button class="btn btn-success">Actif</button></td>
-                      <td></td>
-                    </tr>                    
+                    <th scope="row">{{ $proprietaire->id }}</th>
+                    <td>{{ $proprietaire->nomComplet }}</td>
+                    <td>D{{ $proprietaire->email }}</td>
+                    <td>{{ $proprietaire->telephone }}</td>
+                    <td>{{ $proprietaire->adresse }}</td>
+                    <td>{{ $proprietaire->created_at }}</td>
+                    <td><button class="btn btn-success"><span class=" glyphicon glyphicon-plus">Actif</span></button></td>
+                    <td>
+                     <div style="display:flex;">
+                      <button class="btn btn-warning bi bi-pencil" style="color:white"></button>                      
+                      <button class="btn btn-danger bi bi-trash" style=" margin-left:10px"></button>
+                     </div>
+                    </td>
+                  </tr>
+                  @endforeach
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
