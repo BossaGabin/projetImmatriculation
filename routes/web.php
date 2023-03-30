@@ -19,6 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/proprietaire', [ProprietaireController::class , 'index'] )->name("proprietaire");
-Route::post('/proprietaire', [ProprietaireController::class , 'store']);
 Route::get('/utilisateur', [UtilisateurController::class , 'index'] )->name("utilisateur");
 
