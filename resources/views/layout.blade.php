@@ -159,7 +159,7 @@
       </li>  <!-- End btn d'enregistrement d'utilisateur    -->
          <!-- btn d'enregistrement de vehicule    -->
          <li class="nav-item">
-          <a class="nav-link " href="">
+          <a class="nav-link " href="{{ route('vehicule') }}">
             <i class="bi bi-card-list"></i>
             <span>Vehicules</span>
           </a>

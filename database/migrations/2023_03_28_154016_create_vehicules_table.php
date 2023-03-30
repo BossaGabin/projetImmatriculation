@@ -19,6 +19,7 @@ class CreateVehiculesTable extends Migration
             $table->string("marque");
             $table->string("modele");
             $table->string("image");
+            $table->string("Plaque");
             $table->foreignId("proprietaire_id")->constrained("proprietaires");
             $table->foreignId("utilisateur_id")->constrained("utilisateurs");
             $table->timestamps();
