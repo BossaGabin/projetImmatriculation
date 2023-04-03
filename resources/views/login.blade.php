@@ -58,14 +58,23 @@
               <div class="card mb-3">
 
                 <div class="card-body">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                  @endif 
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Connectez-vous</h5>
                     <p class="text-center small">Entrez votre email et mot de passe</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form class="row g-3 needs-validation" novalidate action="{{ route('check') }}" method="post">
+                    @csrf
                     <div class="col-12">
                       <label for="Email" class="form-label">Email:</label>
                       <div class="input-group has-validation">
@@ -77,7 +86,7 @@
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Mot de passe:</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="motDePasse" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Votre mot de passe</div>
                     </div>
 

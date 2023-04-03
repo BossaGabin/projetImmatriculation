@@ -112,7 +112,7 @@
                 </thead>
                 <tbody>  
                   @forelse ($vehicules as $vehicule)
-                  @dd($vehicule->Proprietaire);
+                  {{-- @dd($vehicule->Proprietaire); --}}
                   <tr>
                     <th scope="row">{{$loop->index +1}}</th>
                     <td>{{$vehicule->Proprietaire->nomComplet}}</td>

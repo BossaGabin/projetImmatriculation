@@ -64,10 +64,11 @@
                     <p class="text-center small">Entrez vos informations</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" novalidate action="/admins" method="POST">
+                    @csrf
                     <div class="col-12">
                       <label for="yourName" class="form-label">Nom:</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
+                      <input type="text" name="nomComplet" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Votre nom s'il vous plait!</div>
                     </div>
 
@@ -75,20 +76,11 @@
                       <label for="yourEmail" class="form-label">Email:</label>
                       <input type="email" name="email" class="form-control" id="yourEmail" required>
                       <div class="invalid-feedback">Votre adresse Mail!</div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Nom d'utilisateur:</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Votre nom d'utilisateur.</div>
-                      </div>
-                    </div>
+                    </div>                 
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Mot de passe:</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="motDePasse" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Votre mot de passe!</div>
                     </div>
 
